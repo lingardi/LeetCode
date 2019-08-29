@@ -11,32 +11,50 @@ package com.example.leetcode.leetcode.Array;
  */
 public class MergeTwoArrays {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        if (n == 0)
-            nums1 = nums1;
-        if (m == 0){
-            for (int i =0; i < nums2.length; i++){
-                nums1[i] = nums2[i];
-            }
+//        if (n == 0)
+//            nums1 = nums1;
+//        if (m == 0){
+//            for (int i =0; i < nums2.length; i++){
+//                nums1[i] = nums2[i];
+//            }
+//        }
+//        int[] nums = new int[m + n];
+//        for (int i = 0; i < m; i++){
+//            nums[i] = nums1[i];
+//        }
+//        int j =0;
+//        for (int i= 0; i < m+n; i++){
+//            for (; j < nums2.length; j++){
+//                if (nums[i] <= nums2[j] && i < m){
+//                    nums1[i + j] = nums[i];
+//                    break;
+//                }else {
+//                    nums1[i + j] = nums2[j];
+//                }
+//            }
+//            if (j == nums2.length && i < m){
+//                for (int k =0; k < m - i; k++){
+//                    nums1[i+ j + k] = nums[i + k];
+//                }
+//            }
+//        }
+        int[] nums = new int[m];
+        System.arraycopy(nums1, 0 , nums, 0, m);
+
+        int p1 = 0;
+        int p2 = 0;
+
+        int p = 0;
+
+        while ((p1 < m) && (p2 < n)){
+            nums1[p++] = nums[p1] < nums2[p2] ? nums[p1++] : nums2[p2++];
         }
-        int[] nums = new int[m + n];
-        for (int i = 0; i < m; i++){
-            nums[i] = nums1[i];
+
+        if (p1 < m){
+            System.arraycopy(nums, p1, nums1, p2 + p1 , m +n - p1 -p2);
         }
-        int j =0;
-        for (int i= 0; i < m+n; i++){
-            for (; j < nums2.length; j++){
-                if (nums[i] <= nums2[j] && nums[i] != 0){
-                    nums1[i] = nums[i];
-                    break;
-                }else {
-                    nums1[i + j] = nums2[j];
-                }
-            }
-            if (j == nums2.length && i < m){
-                for (int k =0; k < m - i; k++){
-                    nums1[i+ j + k] = nums[i + k];
-                }
-            }
+        if (p2 < n){
+            System.arraycopy(nums2, p2, nums1, p1 +p2 , m+ n - p2 -p1);
         }
     }
 }

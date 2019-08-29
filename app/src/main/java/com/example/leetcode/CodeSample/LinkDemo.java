@@ -161,11 +161,11 @@ public class LinkDemo {
         }
     }
 
-    public class LinkDemo{
-        public static void main(String[] args){
-            LinkImp<String> s1 = new LinkImp<String>();
-            s1.add("1");
-            s1.add("2");
-        }
-    }
+//    public class LinkDemo{
+//        public static void main(String[] args){
+//            LinkImp<String> s1 = new LinkImp<String>();
+//            s1.add("1");
+//            s1.add("2");
+//        }
+//    }
 }
