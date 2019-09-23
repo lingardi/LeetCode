@@ -1,11 +1,13 @@
 package com.example.leetcode.CodeSample.JavaConcurrent;
 
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Synchronization {
     private ReentrantLock reentrantLock;
     private double[] accounts;
+
     public class Alipay{
         private Condition condition;
         public Alipay(int n, double money){
