@@ -1,5 +1,14 @@
 package com.example.leetcode.leetcode.Tree;
 
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.Stack;
+
 /**
  * 给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
  *
@@ -40,6 +49,16 @@ public class LowestCommonAncestor {
         return ans;
     }
 
+    /**
+     * 标志位法，最小公共父节点有三种情况：
+     * 不存在
+     * 左子树和右子树各有一点
+     * 左子树或右子树有一点，节点本省有一点
+     * @param root
+     * @param p
+     * @param q
+     * @return
+     */
     private boolean hasPorQ(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null)
             return false;
@@ -51,6 +70,51 @@ public class LowestCommonAncestor {
             ans = root;
         return (mid + left + right > 0);
     }
+
+
+
+    /**
+     * 父指针迭代
+     * @param root
+     * @param p
+     * @param q
+     * @return
+     */
+    public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        Map<TreeNode, TreeNode> parent = new HashMap<>();
+
+        parent.put(root, null);
+        stack.push(root);
+
+        //找到P和Q, 循环后得到含有PQ节点及以上的父子映射关系
+        while (!parent.containsKey(p) || !parent.containsKey(q)){
+            TreeNode node = stack.pop();
+
+            if (node.left != null){
+                parent.put(node.left, node);
+                stack.push(node.left);
+            }
+            if (node.right != null){
+                parent.put(node.right, node);
+                stack.push(node.right);
+            }
+        }
+        Set<TreeNode> ancestors = new HashSet<>();
+
+        // 回溯，找到p的所有父节点
+        while (p != null){
+            ancestors.add(p);
+            p = parent.get(p);
+        }
+
+        //如果p的父节点含有q，则最小公共父节点为p，如果不含q，则回溯q的所有父节点
+        while (!ancestors.contains(q)){
+            q = parent.get(q);
+        }
+        return q;
+    }
+
 
     public  class TreeNode  {
         public int val;
