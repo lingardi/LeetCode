@@ -1,4 +1,4 @@
-package com.example.leetcode.leetcode.Array;
+package com.example.leetcode.leetcode.Array.Hash;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -20,6 +20,13 @@ import java.util.HashMap;
  * 我们可以不考虑输出结果的顺序。
  */
 public class Intersection {
+    /**
+     * 先统计第一个数组，元素唯一，hash值均为1
+     * 第二个数组出现相同值则hash值加1
+     * @param nums1
+     * @param nums2
+     * @return
+     */
     public int[] intersection(int[] nums1, int[] nums2) {
         if (nums1.length == 0)
             return nums1;
