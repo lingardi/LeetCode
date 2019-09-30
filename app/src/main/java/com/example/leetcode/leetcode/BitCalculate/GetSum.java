@@ -1,4 +1,4 @@
-package com.example.leetcode.leetcode.RegularPattern;
+package com.example.leetcode.leetcode.BitCalculate;
 
 /**
  * 不使用运算符 + 和 - ​​​​​​​，计算两整数 ​​​​​​​a 、b ​​​​​​​之和。
