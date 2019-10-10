@@ -13,7 +13,7 @@ public class Quick {
      * @param low
      * @param high
      */
-    public void quickSort(int nums[], int low, int high){
+    public static void quickSort(int nums[], int low, int high){
         int left, right, base;
         if (low > high)
             return;
@@ -41,5 +41,14 @@ public class Quick {
         quickSort(nums, low, right -1 );
         //递归调用右半数组
         quickSort(nums, right+1, high);
+    }
+
+    public static void main(String[] args){
+        int[] data = new int[]{10, 7, 2, 5, 6, 1, 7};
+        quickSort(data,0, 6);
+
+        for (int i = 0; i <data.length; i++){
+            System.out.println(data[i]);
+        }
     }
 }
