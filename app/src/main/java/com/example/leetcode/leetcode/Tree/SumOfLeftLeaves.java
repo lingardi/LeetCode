@@ -27,7 +27,7 @@ public class SumOfLeftLeaves {
         sum += sumOfLeftLeaves(root.right);
         return sum;
     }
-    
+
     public class TreeNode  {
         public int val;
         public TreeNode left;
