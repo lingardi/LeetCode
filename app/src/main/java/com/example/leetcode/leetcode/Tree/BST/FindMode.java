@@ -31,7 +31,7 @@ public class FindMode {
     List<Integer> list = new ArrayList<>();
     TreeNode pre;
     public int[] findMode(TreeNode root) {
-        preOrder(root);
+        inOrder(root);
         int[] ans = new int[list.size()];
         for (int i = 0; i < ans.length; i++){
             ans[i] = list.get(i);
@@ -39,10 +39,10 @@ public class FindMode {
         return ans;
     }
 
-    private void preOrder(TreeNode root) {
+    private void inOrder(TreeNode root) {
         if (root == null)
             return;
-        preOrder(root.left);
+        inOrder(root.left);
         //BST,只用考虑邻近父子节点
         if (pre != null && pre.val == root.val){
             curTimes++;
@@ -57,7 +57,7 @@ public class FindMode {
             list.add(root.val);
         }
         pre = root;
-        preOrder(root.right);
+        inOrder(root.right);
     }
 
     public class TreeNode  {

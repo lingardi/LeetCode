@@ -12,6 +12,7 @@ public class GetMinimumDifference {
         if (root == null)
             return;
         inOrder(root.left);
+        //中序遍历，会先从右子树的左孩子开始，即最小差值最可能出现的位置
         if (pre != null){
             res = Math.min(res, root.val - pre.val);
         }
