@@ -1,4 +1,4 @@
-package com.example.leetcode.leetcode.Tree;
+package com.example.leetcode.leetcode.Tree.N_Tree;
 
 import org.w3c.dom.Node;
 
