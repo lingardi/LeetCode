@@ -49,6 +49,23 @@ public class IsValidBST {
         return isValidBST2(root.left, min, root) && isValidBST2(root.right, root, max);
     }
 
+    TreeNode pre = null;
+    /**
+     * 最快的递归方式
+     * @param root
+     * @return
+     */
+    public boolean isValidBST3(TreeNode root) {
+        if (root == null)
+            return true;
+        if (!isValidBST3(root.left))
+            return false;
+        if (pre != null && pre.val >= root.val)
+            return false;
+        pre = root;
+        return isValidBST3(root.right);
+    }
+
     public class TreeNode {
         int val;
         TreeNode left;

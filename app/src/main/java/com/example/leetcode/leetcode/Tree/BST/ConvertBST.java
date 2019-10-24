@@ -1,4 +1,4 @@
-package com.example.leetcode.leetcode.Tree;
+package com.example.leetcode.leetcode.Tree.BST;
 
 /**
  * 给定一个二叉搜索树（Binary Search Tree），把它转换成为累加树（Greater Tree)，
