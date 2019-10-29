@@ -54,18 +54,18 @@ public class IncreasingBST {
     public TreeNode increasingBST(TreeNode root) {
         res = new TreeNode(0);
         TreeNode newT = res;
-        preorder(root);
+        inorder(root);
         return newT.right;
     }
 
-    private void preorder(TreeNode root) {
+    private void inorder(TreeNode root) {
         if (root == null)
             return;
-        preorder(root.left);
+        inorder(root.left);
         TreeNode t = new TreeNode(root.val);
         res.right = t;
         res = t;
-        preorder(root.right);
+        inorder(root.right);
     }
 
     public class TreeNode  {
