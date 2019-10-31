@@ -1,4 +1,4 @@
-package com.example.leetcode.leetcode.Tree;
+package com.example.leetcode.leetcode.Tree.Judge;
 
 import java.util.ArrayDeque;
 

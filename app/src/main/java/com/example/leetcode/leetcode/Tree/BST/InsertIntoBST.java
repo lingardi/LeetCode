@@ -1,6 +1,6 @@
 package com.example.leetcode.leetcode.Tree.BST;
 
-import com.example.leetcode.leetcode.Tree.IsSameTree;
+import com.example.leetcode.leetcode.Tree.Judge.IsSameTree;
 
 public class InsertIntoBST {
     public IsSameTree.TreeNode insertIntoBST(IsSameTree.TreeNode root, int val) {

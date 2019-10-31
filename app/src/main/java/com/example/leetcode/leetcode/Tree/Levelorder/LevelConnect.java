@@ -1,4 +1,4 @@
-package com.example.leetcode.leetcode.Tree;
+package com.example.leetcode.leetcode.Tree.Levelorder;
 
 /**
  * 给定一个完美二叉树，其所有叶子节点都在同一层，每个父节点都有两个子节点。

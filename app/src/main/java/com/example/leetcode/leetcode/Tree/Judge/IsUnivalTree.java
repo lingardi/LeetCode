@@ -1,4 +1,4 @@
-package com.example.leetcode.leetcode.Tree;
+package com.example.leetcode.leetcode.Tree.Judge;
 
 /**
  * 如果二叉树每个节点都具有相同的值，那么该二叉树就是单值二叉树。

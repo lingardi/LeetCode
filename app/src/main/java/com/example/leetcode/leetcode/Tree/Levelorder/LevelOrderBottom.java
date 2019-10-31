@@ -1,4 +1,4 @@
-package com.example.leetcode.leetcode.Tree;
+package com.example.leetcode.leetcode.Tree.Levelorder;
 
 import java.util.ArrayList;
 import java.util.Collections;
