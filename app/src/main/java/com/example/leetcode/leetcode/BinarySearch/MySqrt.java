@@ -9,7 +9,7 @@ package com.example.leetcode.leetcode.BinarySearch;
  *
  */
 public class MySqrt {
-    public int mySqrt(int x) {
+    public static int mySqrt(int x) {
         if (x == 0){
             return 0;
         }
@@ -25,5 +25,9 @@ public class MySqrt {
             }
         }
         return (int) left;
+    }
+
+    public static void main(String[] args){
+        mySqrt(5);
     }
 }
