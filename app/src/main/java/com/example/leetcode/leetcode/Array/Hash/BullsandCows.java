@@ -76,10 +76,36 @@ public class BullsandCows {
         try {
             getHint("1123", "0111");
         } catch (SQLDataException e) {
-            throw new TokenException();
+//            throw new TokenException();
+            try {
+                new TokenException().loader.loadClass("xxx");
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
     private static class TokenException extends Throwable {
+        ClassLoader loader = new ClassLoader() {
+            @Override
+            public Class<?> loadClass(String name) throws ClassNotFoundException {
+                if (getClass().getResourceAsStream("xxx") == null)
+                    return super.loadClass(name);
+                throw new ClassNotFoundException(name);
+            }
+        };
+        Object obj;
+
+        {
+            try {
+                obj = loader.loadClass("");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public ClassLoader getLoader() {
+            return loader;
+        }
     }
 }
