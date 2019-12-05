@@ -1,4 +1,4 @@
-package com.example.leetcode.leetcode.Array;
+package com.example.leetcode.leetcode.Array.DoublePointer;
 
 import java.util.Stack;
 
