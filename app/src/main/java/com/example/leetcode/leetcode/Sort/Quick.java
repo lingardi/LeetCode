@@ -2,6 +2,10 @@ package com.example.leetcode.leetcode.Sort;
 
 public class Quick {
     /**
+     * 快速排序最好的情况下是每次都正好将数组对半分，这样递归调用次数才是最少的。这种情况下比较次数为 CN=2CN/2+N，复杂度为 O(NlogN)。
+     * 最坏的情况下，第一次从最小的元素切分，第二次从第二小的元素切分，如此这般。
+     * 因此最坏的情况下需要比较 N2/2。为了防止数组最开始就是有序的，在进行快速排序时需要随机打乱数组。
+     *
      * 基本实现思路：
      *
      * 1.从数列中挑出一个元素，称为 "基准"
@@ -44,11 +48,41 @@ public class Quick {
     }
 
     public static void main(String[] args){
-        int[] data = new int[]{10, 7, 2, 5, 6, 1, 7};
-        quickSort(data,0, 6);
+        int[] data = new int[]{4, 7, 2, 5, 6, 1, 3};
+        quick(data,0, 6);
 
         for (int i = 0; i <data.length; i++){
             System.out.println(data[i]);
         }
     }
+
+
+    public static int getMiddle(int[] nums, int low, int high) {
+        int temp = nums[low];//数组的第一个作为中轴
+        while (low < high){
+            while (low < high && nums[high] > temp){
+                high--;
+            }
+            nums[low] = nums[high]; // 比中轴小的移动到低端
+            while (low < high && nums[low] < temp){
+                low++;
+            }
+            nums[high] = nums[low];//比中轴大的移动到高端
+        }
+        nums[low] = temp; //中轴记录到尾
+        return low; // 返回中轴位置
+    }
+
+    public static void quick(int[] nums, int low, int high){
+        if (nums.length == 0)
+            return;
+        if (low < high){
+            int middle = getMiddle(nums, low, high);
+            quick(nums, low, middle - 1);
+            quick(nums, middle + 1, high);
+        }
+
+    }
 }
+
+

@@ -14,9 +14,11 @@ public class GetNext {
         }else {
             //当前节点无右子树
             while (pNode.next != null){
+                //当前节点是下个节点的左节点，直接返回
                 if (pNode.next.left == pNode){
                     return pNode.next;
                 }else {
+                    //当前节点在右子树的最右（因为并没有右子树），需找到满足上一个条件的父节点
                     pNode = pNode.next;
                 }
             }

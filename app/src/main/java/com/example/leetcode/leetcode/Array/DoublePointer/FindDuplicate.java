@@ -22,7 +22,7 @@ import java.util.Arrays;
  * 数组中只有一个重复的数字，但它可能不止重复出现一次。
  */
 public class FindDuplicate {
-    public int findDuplicate(int[] nums) {
+    public static int findDuplicate(int[] nums) {
         Arrays.sort(nums);
         for (int i = 0; i < nums.length; i++){
             if (nums[i] < i + 1)
@@ -37,7 +37,7 @@ public class FindDuplicate {
      * @param nums
      * @return
      */
-    public int findDuplicate2(int[] nums) {
+    public static int findDuplicate2(int[] nums) {
         // Find the intersection point of the two runners.
         int tortoise = nums[0];
         int hare = nums[0];
@@ -55,5 +55,9 @@ public class FindDuplicate {
         }
 
         return ptr1;
+    }
+
+    public static void main(String[] args) {
+        findDuplicate2(new int[]{1,1,4,3,2});
     }
 }

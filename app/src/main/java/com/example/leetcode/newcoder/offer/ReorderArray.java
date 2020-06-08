@@ -28,4 +28,23 @@ public class ReorderArray {
             }
         }
     }
+
+    public void reOrderArray2(int [] array) {
+        if (array.length < 2)
+            return;
+        int start = 0;
+        int end = array.length - 1;
+        while (start < end){
+            while (start < end && array[start] % 2 == 1){
+                start++;
+            }
+            while (start < end && array[end] % 2 == 0){
+                end--;
+            }
+
+            int temp = array[start];
+            array[start] = array[end];
+            array[end] = temp;
+        }
+    }
 }

@@ -10,10 +10,17 @@ public class NumberOf1 {
        return Integer.bitCount(n);
     }
 
+    /**
+     * 把一个整数减去1，再和原整数做与运算，会把该整数最右边一个1变成0.
+     * 那么一个整数的二进制有多少个1
+     * @param n
+     * @return
+     */
     public int NumberOf12(int n) {
         if (n == 0)
             return 0;
         int ans = 0;
+
         while (n != 0){
             ans ++;
             n = n & (n-1);

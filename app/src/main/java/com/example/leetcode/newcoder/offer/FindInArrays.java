@@ -7,12 +7,12 @@ package com.example.leetcode.newcoder.offer;
  */
 public class FindInArrays {
     /**
-     * 从左下角开始找，O（m+n）
+     * 从右上角开始找，O（m+n）
      * @param target
      * @param array
      * @return
      */
-    public boolean Find(int target, int [][] array) {
+    public static boolean Find(int target, int[][] array) {
         if (array.length == 0)
             return false;
         int n = array[0].length - 1;
@@ -27,5 +27,9 @@ public class FindInArrays {
             }
         }
         return false;
+    }
+
+    public static void main(String[] args) {
+        Find(7,new int[][]{{1,2,8,9},{2,4,9,12},{4,7,10,13},{6,8,11,15}});
     }
 }

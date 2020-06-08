@@ -9,6 +9,11 @@ package com.example.leetcode.leetcode.BinarySearch;
  *
  */
 public class MySqrt {
+    /**
+     * 二分法
+     * @param x
+     * @return
+     */
     public static int mySqrt(int x) {
         if (x == 0){
             return 0;
@@ -25,6 +30,21 @@ public class MySqrt {
             }
         }
         return (int) left;
+    }
+
+    /**
+     * 牛顿迭代法
+     * 递推方程：X[i]=X[i-1]/2 + t/(2 * X[i-1])
+     * @param x
+     * @return
+     */
+    public static int mySqrt2(int x) {
+        double t=(double)x;//(double)可以省
+        double x0=x;
+        x0=x0/2+t/(2*x0);
+        while(Math.abs(x0*x0-t)>0.00001)
+            x0=x0/2+t/(2*x0);
+        return (int)x0;//double 转int类型必须使用强制类型转化
     }
 
     public static void main(String[] args){

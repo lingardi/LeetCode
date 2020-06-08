@@ -13,24 +13,25 @@ import java.util.Stack;
  */
 public class DeleteDuplication {
     public static ListNode deleteDuplication(ListNode pHead) {
-        if (pHead == null || pHead.next == null)
-            return pHead;
+        if (pHead == null)
+            return null;
         ListNode head = new ListNode(Integer.MIN_VALUE);
         head.next = pHead;
-        ListNode cur = head.next;
         ListNode pre = head;
+        ListNode cur = head.next;
         while (cur != null){
             if (cur.next != null && cur.next.val == cur.val){
-                while (cur.next != null && cur.next.val == cur.val){
+                while (cur.next != null && cur.next.val == cur.val) {
                     cur = cur.next;
                 }
+                pre.next = cur.next;
                 cur = cur.next;
-                pre.next = cur;
             }else {
                 pre = cur;
                 cur = cur.next;
             }
         }
+        //头节点与后续节点重复时
         return head.next;
     }
 

@@ -18,7 +18,8 @@ public class MinNumberInRotateArray {
             if (array[mid] < ans){
                 ans = array[mid];
             }
-
+            //总有一侧是顺序的
+            //左侧有序，二分查找
             if (array[left] < array[mid]){
                 if (array[left] < ans && array[left] < array[right]){
                     right = mid -1;
@@ -26,6 +27,7 @@ public class MinNumberInRotateArray {
                     left = mid + 1;
                 }
             }else {
+                //右侧有序
                 if (array[right] < ans && array[right] < array[left]){
                     left = mid + 1;
                 }else {
