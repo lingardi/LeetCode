@@ -1,4 +1,4 @@
-package com.example.leetcode.leetcode.LinkList.Hash;
+package com.example.leetcode.leetcode.LinkList.DoublePointer;
 
 import java.util.HashMap;
 
@@ -38,12 +38,33 @@ public class GetIntersectionNode {
     /**
      * 双指针法，链表A的末节点指向链表B的头节点，链表B的末节点指向链表A的头节点，会相遇在相交节点
      * 总路程都等于本链 + 对方链表到相交节点的
+     * 若有公共部分，链表A可分为m + p，链表B可分为n + p
+     * 则AB 和 BA同时开始移动，总长相等，最后都是公共部分，会在交点相遇
      * @param headA
      * @param headB
      * @return
      */
     public ListNode getIntersectionNode2(ListNode headA, ListNode headB) {
-        return null;
+        if (headA == null || headB == null)
+            return null;
+        ListNode p1 = headA;
+        ListNode p2 = headB;
+
+        while (p1 != p2){
+            if (p1 == null){
+                p1 = headB;
+            }else {
+                p1 = p1.next;
+            }
+
+            if (p2 == null){
+                p2 = headB;
+            }else {
+                p2 = p2.next;
+            }
+        }
+
+        return p1;
     }
 
     public class ListNode {
