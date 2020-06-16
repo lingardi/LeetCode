@@ -11,9 +11,7 @@ public class MovingCount {
         if (threshold < 0 || rows < 1 || cols < 1)
             return 0;
         boolean[] visited = new boolean[rows * cols];
-        for (int i =0; i < visited.length; i++){
-            visited[i] = false;
-        }
+
         return movingCountHelper(threshold, rows, cols, 0, 0, visited);
     }
 

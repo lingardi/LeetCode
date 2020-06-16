@@ -1,4 +1,4 @@
-package com.example.leetcode.leetcode.Tree.BST;
+package com.example.leetcode.leetcode.Tree.Judge;
 
 import java.util.Stack;
 
@@ -31,6 +31,13 @@ public class IsValidBST {
         return true;
     }
 
+    public boolean isValidBST(TreeNode root){
+        if (root == null)
+            return true;
+        long min = Long.MIN_VALUE;
+        long max = Long.MAX_VALUE;
+        return isValidBST2(root, min, max);
+    }
     /**
      * 递归，更改上下限
      * @param root
@@ -38,16 +45,15 @@ public class IsValidBST {
      * @param max
      * @return
      */
-    public boolean isValidBST2(TreeNode root, TreeNode min, TreeNode max){
+    public boolean isValidBST2(TreeNode root, long min, long max){
         if (root == null){
             return true;
         }
-        if (min != null && root.val <= min.val)
+        if (root.val <= min || root.val >= max)
             return false;
-        if (max != null && root.val >= max.val)
-            return false;
-        return isValidBST2(root.left, min, root) && isValidBST2(root.right, root, max);
+        return isValidBST2(root.left, min, root.val) && isValidBST2(root.right, root.val, max);
     }
+
 
     TreeNode pre = null;
     /**

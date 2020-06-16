@@ -41,8 +41,34 @@ import java.util.Stack;
  *
  */
 public class LowestCommonAncestor {
-    TreeNode ans;
+    /**
+     * 3种情况：
+     * p、q的最小公共父节点为根结点
+     * p、q均位于根结点的左子树或右子树上
+     * p或q为根结点
+     * @param root
+     * @param p
+     * @param q
+     * @return
+     */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null)
+            return null;
+        if (root == p || root == q)
+            return root;
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        if (left != null && right != null){
+            return root;
+        }else if (left != null){
+            return left;
+        }else{
+            return right;
+        }
+    }
+
+    TreeNode ans;
+    public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null)
             return root;
         hasPorQ(root, p , q);
@@ -80,7 +106,7 @@ public class LowestCommonAncestor {
      * @param q
      * @return
      */
-    public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
+    public TreeNode lowestCommonAncestor3(TreeNode root, TreeNode p, TreeNode q) {
         Stack<TreeNode> stack = new Stack<TreeNode>();
         Map<TreeNode, TreeNode> parent = new HashMap<>();
 
@@ -108,7 +134,7 @@ public class LowestCommonAncestor {
             p = parent.get(p);
         }
 
-        //如果p的父节点含有q，则最小公共父节点为p，如果不含q，则回溯q的所有父节点
+        //如果p的父节点含有q，则最小公共父节点为q，如果不含q，则回溯q的所有父节点
         while (!ancestors.contains(q)){
             q = parent.get(q);
         }

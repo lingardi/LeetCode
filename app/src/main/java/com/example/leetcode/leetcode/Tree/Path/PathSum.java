@@ -58,6 +58,43 @@ public class PathSum {
         return ans;
     }
 
+    /**
+     *
+     * @param root
+     * @param sum
+     * @return
+     */
+    public int pathSum2(TreeNode root, int sum) {
+        int deep = depth(root);
+        int[] path = new int[deep];
+
+        count(root, sum, path, 0);
+        return res;
+    }
+    int res = 0;
+
+    public void count(TreeNode root, int sum, int[] path, int deep){
+        if(root == null){
+            return;
+        }
+        path[deep] = root.val;
+        int t = 0;
+        for(int i = deep; i >= 0; i--){
+            t += path[i];
+            if(t == sum){
+                res += 1;
+            }
+        }
+        count(root.left, sum, path, deep + 1);
+        count(root.right, sum, path, deep + 1);
+    }
+
+    public int depth(TreeNode root){
+        if(root == null){
+            return 0;
+        }
+        return Math.max(depth(root.left), depth(root.right)) + 1;
+    }
 
     public  class TreeNode  {
         public int val;
